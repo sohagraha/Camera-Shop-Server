@@ -22,7 +22,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        //console.log("database connected");
 
         const database = client.db("finaltest");
         const servicesCollection = database.collection("services")
@@ -77,24 +76,18 @@ async function run() {
             const service = req.body;
             const result = await servicesCollection.insertOne(service);
             res.json(result)
-            // console.log("hitting post");
-            res.send('inside post');
         })
 
         app.post('/reviews', async (req, res) => {
             const review = req.body;
             const result = await reviewsCollection.insertOne(review);
             res.json(result)
-            // console.log("hitting post");
-            res.send('inside post');
         })
 
         app.post('/orders', async (req, res) => {
             const service = req.body;
             const result = await ordersCollection.insertOne(service);
             res.json(result)
-            console.log("hitting post");
-            res.send('inside post');
         })
 
 
